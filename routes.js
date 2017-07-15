@@ -34,6 +34,7 @@ import { NotificationsScreen } from 'notifications';
 //Repository
 import { RepositoryScreen } from 'repository';
 import { RepositoryCodeListScreen } from 'repository';
+import { CommitsListScreen } from 'repository';
 import { RepositoryFileScreen } from 'repository';
 import { IssueListScreen } from 'repository';
 import { PullListScreen } from 'repository';
@@ -89,6 +90,12 @@ const sharedRoutes = {
         ? 'Code'
         : navigation.state.params.content.name
     })
+  },
+  RepositoryCommitsList: {
+    screen: CommitsListScreen,
+    navigationOptions: {
+      title: 'Commits'
+    }
   },
   RepositoryFile: {
     screen: RepositoryFileScreen,

@@ -2,6 +2,7 @@ import {
   GET_REPOSITORY,
   GET_REPOSITORY_CONTRIBUTORS,
   GET_REPOSITORY_CONTENTS,
+  GET_REPOSITORY_COMMITS,
   GET_REPOSITORY_FILE,
   GET_REPOSITORY_ISSUES,
   GET_REPO_STARRED_STATUS,
@@ -108,6 +109,28 @@ export const getContents = (url, level) => {
       .catch(error => {
         dispatch({
           type: GET_REPOSITORY_CONTENTS.ERROR,
+          payload: error
+        });
+      });
+  };
+};
+
+export const getRepositoryCommits = url => {
+  return (dispatch, getState) => {
+    const accessToken = getState().auth.accessToken;
+
+    dispatch({ type: GET_REPOSITORY_COMMITS.PENDING });
+
+    fetchUrl(url, accessToken)
+      .then(data => {
+        dispatch({
+          type: GET_REPOSITORY_COMMITS.SUCCESS,
+          results: data
+        });
+      })
+      .catch(error => {
+        dispatch({
+          type: GET_REPOSITORY_COMMITS.ERROR,
           payload: error
         });
       });

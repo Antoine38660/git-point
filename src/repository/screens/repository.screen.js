@@ -234,6 +234,18 @@ class Repository extends Component {
                 })}
               underlayColor={colors.greyLight}
             />
+            <ListItem
+              title="Commits"
+              titleStyle={styles.listTitle}
+              leftIcon={{
+                name: 'git-commit',
+                color: colors.grey,
+                type: 'octicon'
+              }}
+              onPress={() =>
+                navigation.navigate('RepositoryCommitsList', {})}
+              underlayColor={colors.greyLight}
+            />
           </SectionList>
 
           <SectionList
